@@ -178,7 +178,6 @@ kakuro_hard8x8 = [
 
 #####################################################kakuro_given4x3############################################################
 
-
 print("\n\nKakuro puzzle: kakuro_given4x3\n")
 board = kakuro_given4x3
 
@@ -201,7 +200,6 @@ print("\tHeuristic and CSP algorithms: BT + FC")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 
-
 # BT + FC + MRV
 Kakuro_problem = Kakuro(board)
 start_time = time()
@@ -220,12 +218,30 @@ print("\tHeuristic and CSP algorithms: BT + FC + MRV + LCV")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 
-# BT + AR3
+# BT + AC3
 Kakuro_problem = Kakuro(board)
 start_time = time()
-assignments = backtracking_search(Kakuro_problem, inference=AC3_inference)
+assignments = backtracking_search(Kakuro_problem, inference=AC3)
 total_time = time() - start_time
-print("\tHeuristic and CSP algorithms: BT + AR3")
+print("\tHeuristic and CSP algorithms: BT + AC3")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV + LCV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, order_domain_values=lcv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV + LCV")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 
@@ -271,18 +287,37 @@ print("\tHeuristic and CSP algorithms: BT + FC + MRV + LCV")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 
-# BT + AR3
+# BT + AC3
 Kakuro_problem = Kakuro(board)
 start_time = time()
-assignments = backtracking_search(Kakuro_problem, inference=AC3_inference)
+assignments = backtracking_search(Kakuro_problem, inference=AC3)
 total_time = time() - start_time
-print("\tHeuristic and CSP algorithms: BT + AR3")
+print("\tHeuristic and CSP algorithms: BT + AC3")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV + LCV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, order_domain_values=lcv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV + LCV")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
 ##################################################kakuro_given14x14###############################################################
+
 print("\n\nKakuro puzzle: kakuro_given14x14\n")
 board = kakuro_given14x14
-
 
 # BT + FC + MRV
 Kakuro_problem = Kakuro(board)
@@ -303,16 +338,35 @@ print("\tHeuristic and CSP algorithms: BT + FC + MRV + LCV")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 
-# BT + AR3
+# BT + AC3
 Kakuro_problem = Kakuro(board)
 start_time = time()
-assignments = backtracking_search(Kakuro_problem, inference=AC3_inference)
+assignments = backtracking_search(Kakuro_problem, inference=AC3)
 total_time = time() - start_time
-print("\tHeuristic and CSP algorithms: BT + AR3")
+print("\tHeuristic and CSP algorithms: BT + AC3")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV + LCV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, order_domain_values=lcv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV + LCV")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 
 ##############################################kakuro_hard8x8#####################################################################
+
 print("\n\nKakuro puzzle: kakuro_hard8x8\n")
 board = kakuro_hard8x8
 
@@ -335,12 +389,30 @@ print("\tHeuristic and CSP algorithms: BT + FC + MRV + LCV")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 
-# BT + AR3
+# BT + AC3
 Kakuro_problem = Kakuro(board)
 start_time = time()
-assignments = backtracking_search(Kakuro_problem, inference=AC3_inference)
+assignments = backtracking_search(Kakuro_problem, inference=AC3)
 total_time = time() - start_time
-print("\tHeuristic and CSP algorithms: BT + AR3")
+print("\tHeuristic and CSP algorithms: BT + AC3")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV")
+print("\tSolved in", total_time, "seconds.")
+print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
+
+# BT + AC3 + MRV + LCV
+Kakuro_problem = Kakuro(board)
+start_time = time()
+assignments = backtracking_search(Kakuro_problem, select_unassigned_variable=mrv, order_domain_values=lcv, inference=AC3)
+total_time = time() - start_time
+print("\tHeuristic and CSP algorithms: BT + AC3 + MRV + LCV")
 print("\tSolved in", total_time, "seconds.")
 print("\tMade", Kakuro_problem.nassigns, "assignments.\n")
 ######################################################################################################################################

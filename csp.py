@@ -100,10 +100,8 @@ identity = lambda x: x
 def argmin_random_tie(seq, key=identity):
     return min(shuffled(seq), key=key)
 
-
 def argmax_random_tie(seq, key=identity):
     return max(shuffled(seq), key=key)
-
 
 def shuffled(iterable):
     items = list(iterable)
@@ -149,10 +147,16 @@ def forward_checking(csp, var, value, assignment, removals):
                 return False
     return True
 
-def AC3(csp, queue=None):
-    if queue is None:
-        queue = [(Xi, Xk) for Xi in csp.variables for Xk in csp.neighbors[Xi]]
+def AC3(csp, var, value, assignment, removals):
+    def revise(csp, Xi, Xj):
+        revised = False
+        for x in csp.curr_domains[Xi][:]:
+            if not any(csp.constraints(Xi, x, Xj, y) for y in csp.curr_domains[Xj]):
+                csp.prune(Xi, x, removals)
+                revised = True
+        return revised
 
+    queue = [(Xk, var) for Xk in csp.neighbors[var]]
     while queue:
         (Xi, Xj) = queue.pop(0)
         if revise(csp, Xi, Xj):
@@ -162,18 +166,6 @@ def AC3(csp, queue=None):
                 if Xk != Xj:
                     queue.append((Xk, Xi))
     return True
-
-def revise(csp, Xi, Xj):
-    revised = False
-    removals = []
-    for x in csp.curr_domains[Xi][:]:
-        if not any(csp.constraints(Xi, x, Xj, y) for y in csp.curr_domains[Xj]):
-            csp.prune(Xi, x, removals)
-            revised = True
-    return revised, removals
-
-def AC3_inference(csp, var, value, assignment, removals):
-    return AC3(csp)
 
 # The search, proper
 def backtracking_search(csp, select_unassigned_variable=first_unassigned_variable,
